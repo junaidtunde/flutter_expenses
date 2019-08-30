@@ -34,7 +34,9 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
-  String titleInput, amountInput;
+  // String titleInput, amountInput;
+  final titleController = TextEditingController();
+  final amountController  = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +63,14 @@ class MyHomePage extends StatelessWidget {
                 children: <Widget>[
                   TextField(
                     decoration: InputDecoration(labelText: 'Title'),
-                    onChanged: (val) => titleInput = val,
+                    controller: this.titleController,
+                    // onChanged: (val) => this.titleInput = val,
                   ),
                   TextField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(labelText: 'Amount'),
-                    onChanged: (val) => amountInput = val
+                    controller: this.amountController,
+                    // onChanged: (val) => this.amountInput = val
                   ),
                   FlatButton(
                     child: Text(
@@ -75,7 +79,9 @@ class MyHomePage extends StatelessWidget {
                         color: Colors.purple,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      print('Added ${this.titleController.text}');
+                    },
                   ),
                 ],
               ),
